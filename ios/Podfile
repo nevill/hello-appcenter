@@ -25,5 +25,10 @@ target 'helloAppcenter' do
 
   post_install do |installer|
     react_native_post_install(installer)
+    installer.pods_project.targets.each do |t|
+       t.build_configurations.each do |bc|
+           bc.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
+       end
+   end
   end
 end
